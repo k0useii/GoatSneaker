@@ -1,0 +1,57 @@
+﻿@model Project_Design_Web.Models.OrderDetail
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Bạn có muốn xoá đơn hàng này không?</h3>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderPro.AddressDeliverry)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderPro.AddressDeliverry)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.NamePro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.NamePro)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

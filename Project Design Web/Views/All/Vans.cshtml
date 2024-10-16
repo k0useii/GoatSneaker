@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Project_Design_Web.Models.Product>
+@{
+    ViewBag.Title = "Vans";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+
+<style>
+    .description-info {
+        border-radius: 14px;
+        padding: 5px;
+    }
+
+    
+    .button-detail {
+        background-color: grey;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        padding: 5px 5px;
+        border-radius: 12px;
+    }
+
+        .button-detail:hover {
+            color: white;
+        }
+</style>
+<h2 style="text-align:center;">DANH SÁCH SẢN PHẨM</h2>
+<div class="body-button-search">
+    <span class="button-search"><a href="~/Product/SearchOption"></a></span>
+</div>
+<div class="container">
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+            <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card-pro">
+                    <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                    <div class="description-info">
+                        <p>@Html.DisplayFor(model => pro.NamePro)</p>
+                        <p style="font-size:14px;color:gray;">@Html.DisplayFor(model => pro.DecriptionPro)</p>
+                        <p>@Html.DisplayFor(model => pro.Price)<span>$</span></p>
+                        <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="buy-button">Buy</a>
+                        <a href="~/Product/Details/@pro.ProductID" class="button-detail"> Chi tiết</a>
+
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<style>
+    .description-info {
+        border-radius: 14px;
+        padding: 5px;
+    }
+
+    .buy-button {
+        margin-left: 30px;
+    }
+</style>
+<h2 style="text-align:center;">Vans</h2>
+
+<div class="container">
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+            <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card-pro">
+                    <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                    <div class="description-info">
+                        <p>@Html.DisplayFor(model => pro.NamePro)</p>
+                        <p style="font-size:14px;color:gray;">@Html.DisplayFor(model => pro.DecriptionPro)</p>
+                        <p>@Html.DisplayFor(model => pro.Price)<span>$<a href="/ShoppingCart/AddToCart/@pro.ProductID" class="buy-button">Buy</a></span></p>
+
+
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+

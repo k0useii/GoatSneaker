@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Project_Design_Web.Models.Product>
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+
+<h2 style="text-align:center;">Quản lí sản phẩm</h2>
+<a href="~/Product/Create"> <input type="button" value="Tạo mới" class="button-createnew" style="" /> </a>
+
+<p></p>
+@using (Html.BeginForm("ProductList", "Product", FormMethod.Get))
+{
+    
+   
+
+    <p></p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamePro)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NamePro)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.ImagePro)" height="100" width="100" />
+                </td>
+                <td>
+                    
+                    @Html.ActionLink("Details", "Details1", new { id = item.ProductID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ProductID })
+                </td>
+            </tr>
+        }
+   </table>
+}       

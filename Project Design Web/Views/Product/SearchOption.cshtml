@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Project_Design_Web.Models.Product>
+
+@{
+    ViewBag.Title = "SearchOption";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+<style>
+    .description-info {
+        border-radius: 14px;
+        padding: 5px;
+    }
+
+    .buy-button {
+        margin-left: 30px;
+    }
+
+    .searchoption-button {
+        border-radius: 12px;
+        padding: 5px;
+        border: 2px solid black;
+        font-weight: 500;
+        background-color: black;
+        color: white;
+    }
+
+        .searchoption-button:hover {
+            background-color: red;
+        }
+    .button-detail {
+        background-color: grey;
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        padding: 5px 5px;
+        border-radius: 12px;
+    }
+
+        .button-detail:hover {
+            color: white;
+        }
+</style>
+<h2 style="text-align:center;font-weight:bold;">DANH SÁCH SẢN PHẨM</h2>
+<div style="margin-top:100px;"></div>
+<div style="border: none; height: 70px; text-align: center; padding: 15px;">
+    <!-- Đoạn thêm -->
+    @using (Html.BeginForm("SearchOption", "Product", FormMethod.Get))
+    {
+        <table>
+            <tr>
+                <td style="font-weight:bold;text-align:right; padding:10px;">
+                    Tên Sản phẩm : <input style="border-radius:12px;padding:5px;" type="text" name="SearchString" placeholder="Tên sản phẩm..." />
+                    <input class="searchoption-button" type="submit" value="Tìm kiếm" />
+                </td>
+                <td style="font-weight:bold;text-align:right;padding:10px">
+                    Đơn giá từ : <input style="border-radius:12px;padding:5px;" placeholder="Giá nhỏ nhất..." type="text" name="min" />
+                    Đến : <input style="border-radius:12px;padding:5px;" placeholder="Giá lớn nhất..." type="text" name="max" />
+                    <input class="searchoption-button" type="submit" value="Tìm giá" />
+                </td>
+            </tr>
+        </table>
+    }
+    <!--Kết thúc -->
+</div>
+
+<div class="container">
+    <div class="row">
+        @foreach (var pro in Model)
+        {
+            <div class="col-sm-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card-pro">
+                    <img src="@Url.Content(pro.ImagePro)" height="150" width="150" />
+                    <div class="description-info">
+                        <p>@Html.DisplayFor(model => pro.NamePro)</p>
+                        <p style="font-size:14px;color:gray;">@Html.DisplayFor(model => pro.DecriptionPro)</p>
+                        <p>@Html.DisplayFor(model => pro.Price)<span>$</span></p>
+                        <a href="/ShoppingCart/AddToCart/@pro.ProductID" class="buy-button">Buy</a>
+                        <a href="~/Product/Details/@pro.ProductID" class="button-detail"> Chi tiết</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+    }
+

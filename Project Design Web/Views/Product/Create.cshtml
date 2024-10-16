@@ -1,0 +1,85 @@
+﻿@model Project_Design_Web.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+<style>
+    .table-bordered {
+        border: none;
+        margin-left: 33%;
+        border-color: white;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+    }
+
+    form {
+        border-top: 1px solid gray;
+        padding: 10px;
+        border: none;
+        border-top: 1px solid gray;
+    }
+
+    tr, td {
+        padding: 10px;
+    }
+
+    .create-product-title {
+        font-weight: bold;
+        text-align: right;
+    }
+
+    .create-product-button {
+        border-radius: 12px;
+    }
+
+    .button-insert-image {
+    }
+
+    .box-create-product {
+        border-radius: 16px;
+    }
+</style>
+<h2 style="text-align:center;">THÊM MỚI SẢN PHẨM</h2>
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/cdata" }))
+{
+    <table class="table-bordered">
+        <tr>
+            <td class="create-product-title">Tên sản phẩm</td>
+            <td class="box-create-product">@Html.EditorFor(model => model.NamePro)</td>
+        </tr>
+        <tr>
+            <td class="create-product-title">Giá sản phẩm</td>
+            <td class="box-create-product">@Html.EditorFor(model => model.Price)</td>
+        </tr>
+        <tr>
+            <td class="create-product-title">Loại sản phẩm</td>
+            <td class="box-create-product">
+                @{ Html.RenderAction("SelectCate", "Product");
+                }
+            </td>
+        </tr>
+        <tr>
+            <td class="create-product-title">Mô tả</td>
+            <td class="box-create-product">@Html.EditorFor(model => model.DecriptionPro)</td>
+        </tr>
+        <tr>
+            <td class="create-product-title">Ảnh sản phẩm</td>
+            <td>
+                
+                <img src="~/Image/MLB1.jpg" style="width:150px;height:150px;"/>
+                
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="file" name="UploadImage" onchange="ChangeImage(this, document.getElementById('previewImage'))" />
+                <input type="submit" value="Tạo mới" class="create-product-button" />
+
+            </td>
+
+
+        </tr>
+    </table>
+}
+

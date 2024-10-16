@@ -1,0 +1,33 @@
+﻿@model Project_Design_Web.Models.Category
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+<link href="~/Content/Category.css" rel="stylesheet" type="text/css" />
+<h2>Details</h2>
+
+<div>
+    <fieldset>
+        <legend>Category</legend>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.IDCate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.IDCate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NameCate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.NameCate)
+            </dd>
+        </dl>
+    </fieldset>  
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "ListCategory")
+</p>

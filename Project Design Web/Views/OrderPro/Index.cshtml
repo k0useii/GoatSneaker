@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Project_Design_Web.Models.OrderPro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+
+<h2 style="text-align:center;">Mô tả đơn hàng</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Ngày đặt hàng
+        </th>
+        <th>
+            Địa chỉ giao hàng
+        </th>
+        <th>
+            Tên khách hàng
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddressDeliverry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer.NameCus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

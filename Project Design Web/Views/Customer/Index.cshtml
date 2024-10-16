@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Project_Design_Web.Models.Customer>
+
+@{
+    ViewBag.Title = "Quản lí khách hàng";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+
+<h2 style="text-align:center;">Quản lí khách hàng</h2>
+
+<a href="~/Customer/Create"> <input type="button" value="Đăng ký khách hàng mới"/></a>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameCus)           
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneCus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailCus)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneCus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailCus)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IDCus }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IDCus }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IDCus })
+        </td>
+    </tr>
+}
+
+</table>

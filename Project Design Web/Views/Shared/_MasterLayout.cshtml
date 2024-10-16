@@ -1,0 +1,66 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .div-header {
+            background-color: white;
+            width:100%;
+            height: 60px;
+            clear:both;
+        }
+        .div-left{
+            width:20%;
+            height:550px;
+            background-color:gray;
+            float:left;
+        }
+        .div-right {
+            width: 80%;
+            height: 550px;
+            background-color: #C7E7C6;
+            float:right;
+        }
+        .div-footer{
+            background-color:aqua;
+            width:100%;
+            height:50px;
+            clear:both;
+        }
+        .list-style-products{
+            list-style-type: none;
+        }
+    </style>
+
+</head>
+<body style="margin:0; font-family:Verdana, Geneva, Tahoma, sans-serif">
+    <div class="div-header">   <!--Header layout-->
+        <img src="~/Resources/Img/logobrand.jpg" alt="logo-brand" width="50" height="100"/>
+    </div>
+    <div class="div-left">
+        <h3>All Products:</h3>
+        <ul>
+            <li class="list-style-products">Men Shoes's</li>
+            <li class="list-style-products">Women Shoes's</li>
+            <li class="list-style-products">Trainning & Gym</li>
+            <li class="list-style-products">Running</li>
+            <li class="list-style-products">Fashion</li>
+            <li class="list-style-products">Baseketball</li>
+            <li class="list-style-products">Football</li>
+        </ul>
+    </div>
+    <div class="div-right">
+        Right
+        @RenderBody()
+    </div>
+    <div class="div-footer">
+        Footer
+    </div>
+</body>
+</html>

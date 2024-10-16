@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Project_Design_Web.Models.Category>
+
+@{
+    ViewBag.Title = "ListCategory";
+
+}
+@{ 
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+<link href="~/Content/Category.css" rel="stylesheet" type="text/css"/>
+<h2 style="text-align: center">Loại sản phẩm</h2>
+<style>
+    a{
+        text-decoration:none;
+
+    }
+    
+</style>
+<a href="~/Categories/Create"> <input type="button" value="Tạo mới" class="button-createnew" style="color:white;"/> </a>
+
+<p></p>
+@using (Html.BeginForm("ListCategory", "Categories", FormMethod.Get))
+{
+     <input type="text" name="_name"/>
+     <input type="submit" value="Search" class="button-search"/> 
+     <p></p>
+<table class="category-table" >
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IDCate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameCate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IDCate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameCate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+}

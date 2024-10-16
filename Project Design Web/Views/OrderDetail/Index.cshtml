@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Project_Design_Web.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+
+<h2 style="text-align:center;">Thông tin đơn hàng</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderPro.AddressDeliverry)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.NamePro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderPro.AddressDeliverry)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product.NamePro)
+        </td>
+        <td>
+            
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

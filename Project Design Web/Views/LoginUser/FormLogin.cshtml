@@ -1,0 +1,56 @@
+﻿@model Project_Design_Web.Models.AdminUser
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+<style>
+    .field-validation-error {
+        color: red;
+    }
+    .button-login-home {
+        border-radius: 50px;
+        padding: 12px;
+        
+        color: white;
+        box-shadow: 0px 4px 20px 0px #49c628a6;
+        background-image: linear-gradient(135deg, #70F570 10%, #49C628 100%);
+        cursor:pointer;
+        text-decoration:none;
+        
+    }
+</style>
+<h5>Đăng nhập</h5>
+@using (Html.BeginForm("LoginAcount", "LoginUser"))
+{
+    @Html.AntiForgeryToken()
+
+    <p>Bạn chưa có tài khoản? <a href="/LoginUser/RegisterUser">Ấn vào đây để tạo tài khoản</a> </p>
+    <div class="inputs">
+        <p>@Html.LabelFor(model => model.NameUser) </p>
+        <p>@Html.TextBoxFor(model => model.NameUser, new { style = "field-validation-error" })</p>
+        <p>@Html.ValidationMessageFor(model => model.NameUser)</p>
+        <br>
+        <p>@Html.LabelFor(model => model.PasswordUser) </p>
+        <p>@Html.EditorFor(model => model.PasswordUser) </p>
+        <p>@Html.ValidationMessageFor(model => model.PasswordUser) </p>
+
+        <p>@Html.LabelFor(model => model.RoleUser) </p>
+        <p>@Html.EditorFor(model => model.RoleUser) </p>
+        <p>@Html.ValidationMessageFor(model => model.RoleUser) </p>
+        @if (ViewBag.ErrorInFor == null)
+        {
+            <p>@ViewBag.ErrorInfor</p>
+        }
+    </div>
+
+    <br>
+    <br>    
+
+  
+    <button style="cursor:pointer;"type="submit">Đăng nhập</button>
+}
+
+
+<button type="submit"><a href="@Url.Action("RegisterUser","LoginUser")" style="text-decoration:none; color:white;">Đăng kí</a></button>
+<a href="~/Product/Index" class="button-login-home">  Trở về</a>

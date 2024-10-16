@@ -1,0 +1,40 @@
+﻿@model Project_Design_Web.Models.AdminUser
+
+@{
+    ViewBag.Title = "RegisterUser";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<style>
+    .field-validation-error {
+        color: red;
+    }
+   
+</style>
+
+<h5>Đăng kí </h5>
+@using (Html.BeginForm("RegisterUser", "LoginUser", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <p>@Html.LabelFor(model => model.ID)</p>
+    <p>@Html.EditorFor(model => model.ID)</p>
+    <p>@Html.ValidationMessageFor(model => model.ID)</p>
+    if (ViewBag.ErrorRegister != null)
+    {
+        <p>@ViewBag.ErrorRegister</p>
+    }
+    <p>@Html.LabelFor(model => model.NameUser)</p>
+    <p>@Html.EditorFor(model => model.NameUser)</p>
+    <p>@Html.ValidationMessageFor(model => model.NameUser)</p>
+
+    <p>@Html.LabelFor(model => model.PasswordUser)</p>
+    <p>@Html.PasswordFor(model => model.PasswordUser)</p>
+    <p>@Html.ValidationMessageFor(model => model.PasswordUser)</p>
+
+    <p>@Html.LabelFor(model => model.ConfirmPass)</p>
+    <p>@Html.PasswordFor(model => model.ConfirmPass)</p>
+    <p>@Html.ValidationMessageFor(model => model.ConfirmPass)</p>
+    <button type="submit">Đăng kí</button>
+}
+<button type="submit"><a href="@Url.Action("FormLogin","LoginUser")" style="text-decoration:none; color:white;">Trở về</a></button>
+<a href=""></a>

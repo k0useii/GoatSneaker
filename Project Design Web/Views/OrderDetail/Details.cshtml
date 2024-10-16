@@ -1,0 +1,50 @@
+﻿@model Project_Design_Web.Models.OrderDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout2.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Số lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            Tổng tiền
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            Địa chỉ giao hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderPro.AddressDeliverry)
+        </dd>
+
+        <dt>
+            Tên sản phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.NamePro)
+        </dd>
+
+    </dl>
+</div>
+<p>  
+    @Html.ActionLink("Back to List", "Index")
+</p>
